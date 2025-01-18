@@ -1,6 +1,10 @@
 # bun-route
+![CI/CD](https://github.com/noblemajo/bun-route/actions/workflows/npm-publish.yml/badge.svg)
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![typescript](https://img.shields.io/badge/dynamic/json?style=plastic&color=blue&label=Typescript&prefix=v&query=peerDependencies.typescript&url=https%3A%2F%2Fraw.githubusercontent.com%2Fnoblemajo%2Fbun-route%2Fmain%2Fpackage.json)
+![npm](https://img.shields.io/npm/v/bun-route.svg?style=plastic&logo=npm&color=red)
+<!-- ![github](https://img.shields.io/badge/dynamic/json?style=plastic&color=darkviolet&label=GitHub&prefix=v&query=version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fnoblemajo%2Fbun-route%2Fmain%2Fpackage.json) -->
+
 ![](https://img.shields.io/badge/dynamic/json?color=green&label=watchers&query=watchers&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fbun-route)
 ![](https://img.shields.io/badge/dynamic/json?color=yellow&label=stars&query=stargazers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fbun-route)
 ![](https://img.shields.io/badge/dynamic/json?color=navy&label=forks&query=forks&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fbun-route)
