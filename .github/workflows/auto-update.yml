@@ -32,7 +32,7 @@ jobs:
     - name: Commit and push changes
       uses: EndBug/add-and-commit@v9
       with:
-        add: 'package*.json'
+        add: 'package*.json bun.lockb'
         message: 'Bot: bun deps update'
 
     - name: Store build artifacts
@@ -42,6 +42,7 @@ jobs:
         path: |
           dist
           package*.json
+          bun.lockb
 
   publish-npm:
     needs: update-deps
@@ -59,6 +60,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
+
+      - name: Prepare npm build
+        run: |
+          sed -i 's!./src!./dist!g' ./package.json
+          bun i
           
       - name: Publish to npmjs.com
         run: bun publish

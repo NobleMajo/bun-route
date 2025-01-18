@@ -57,6 +57,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-artifacts
+
+      - name: Prepare npm build
+        run: |
+          sed -i 's!./src!./dist!g' ./package.json
+          bun i
           
       - name: Publish to npmjs.com
         run: bun publish
