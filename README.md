@@ -45,20 +45,28 @@
 
 ## install
 
+Install **typescript** source from GitHub:
+
 ```sh
 bun i github:NobleMajo/bun-route
+```
+
+or compiled **javascript** from the npm registry:
+
+```sh
+npm i bun-route
 ```
 
 ## import 
 
 ```ts
-import { Router } from "bun-route/src/index";
+import { Router } from "bun-route";
 ```
 
 ## example
 
 ```ts
-import { Router } from "bun-route/src/index";
+import { Router } from "bun-route";
 
 const router = new Router()
 
