@@ -1,0 +1,65 @@
+name: npm-publish
+run-name: NPM build, test and publish
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'package.json'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Bun.js
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: latest
+
+    - name: Update bun dependencies
+      run: |
+        bun i
+        bun run build
+        bun run test --if-present
+
+    - name: Commit and push changes
+      uses: EndBug/add-and-commit@v9
+      with:
+        add: 'package*.json'
+        message: 'Bot: bun deps update'
+
+    - name: Store build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-artifacts
+        path: |
+          dist
+          package*.json
+
+  publish-npmjs-com:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Bun.js
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist
+          
+      - name: Publish to npmjs.com
+        run: bun publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

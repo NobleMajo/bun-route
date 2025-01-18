@@ -293,7 +293,8 @@ export class Router {
         req.cookies = {}
         req.path = new URL(req.url).pathname
         req.splitPath = splitPath(req.path)
-        const sock = req.server.requestIP(req)
+        // @ts-nocheck
+        const sock = req.server.requestIP(req as any) //TODO: fix bun/node type errors
         if (!sock) {
             return new Response("Request closed to early", { status: 500 })
         }
@@ -709,7 +710,8 @@ export class Router {
      */
     ws(path: string): Router {
         const wsMiddleware: RequestMiddleware = (req, res) => {
-            if (req.server.upgrade(req)) {
+            // @ts-nocheck
+            if (req.server.upgrade(req as any)) { //TODO: fix bun/node type errors
                 req.upgraded = true
             }
         }
@@ -781,12 +783,18 @@ export class Router {
 
                 try {
                     const file = Bun.file(targetPath)
-                    return file.exists().then((exist) => {
+                    return file.exists().then(async (exist) => {
                         if (exist) {
-                            res.send(file)
+                            res.send(await file.arrayBuffer())
+                        } else {
+                            res.status(404)
                         }
+                    }).catch(() => {
+                        res.status(500, "Error while loading response content")
                     })
-                } catch (_) { }
+                } catch (_) {
+                    res.status(500, "Error while init response content")
+                }
             }
 
         this.use(

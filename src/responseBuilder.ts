@@ -13,7 +13,7 @@ export class ResponseBuilder {
     submit: boolean = false
     statusCode: number = 200
     statusText?: string
-    bodyInit?: BodyInit
+    bodyInit: BodyInit = null
     headers: [string, string][] = []
 
     beforeSentHooks: ((res: ResponseBuilder) => Awaitable<void>)[] | undefined
@@ -79,7 +79,7 @@ export class ResponseBuilder {
      */
     build(): Response {
         return new Response(
-            this.bodyInit,
+            this.bodyInit as any, //TODO: fix bun/node type errors
             {
                 status: this.statusCode,
                 statusText: this.statusText,
@@ -96,7 +96,7 @@ export class ResponseBuilder {
         this.submit = false
         this.statusCode = 200
         this.statusText = undefined
-        this.bodyInit = undefined
+        this.bodyInit = null
         this.headers = []
         return this
     }
@@ -200,7 +200,9 @@ export class ResponseBuilder {
      * @param bodyInit The body of the response
      * @returns The response builder instance
      */
-    body(bodyInit: BodyInit): ResponseBuilder {
+    body(
+        bodyInit: BodyInit = null,
+    ): ResponseBuilder {
         this.bodyInit = bodyInit
         return this
     }
@@ -209,7 +211,9 @@ export class ResponseBuilder {
      * Submits the response to the client, with an optional body.
      * @param bodyInit The body of the response, if any
      */
-    send(bodyInit?: BodyInit): void {
+    send(
+        bodyInit: BodyInit = null,
+    ): void {
         this.bodyInit = bodyInit
         this.submit = true
     }
@@ -247,7 +251,7 @@ export class ResponseBuilder {
      * @returns void because it is submitted to the client
      */
     sendBasicAuth(
-        bodyInit?: BodyInit,
+        bodyInit: BodyInit = null,
         realm: string = "User Visible Realm",
         charset: string = "UTF-8",
     ): void {

@@ -1,13 +1,42 @@
 {
-  "name": "bunrouter",
-  "version": "1.0.1",
-  "module": "src/index.ts",
+  "name": "bun-route",
+  "version": "1.0.14",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "description": "A fast, Express-like router for the high-performance bun.serve() HTTP server.",
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
   "scripts": {
-    "test": "bun test"
+    "bump": "bun --print \"const pkg = await Bun.file('package.json').json(); pkg.version = pkg.version.split('.').map((v, i) => i===2?+v+1:v).join('.'); await Bun.write('package.json', JSON.stringify(pkg, null, 2)); export default pkg.version\"",
+    "test": "bun test",
+    "build": "bun run .github/build.ts"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "bun"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/NobleMajo/bun-route",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NobleMajo/bun-route.git"
+  },
+  "bugs": "https://github.com/NobleMajo/bun-route/issues",
+  "author": {
+    "name": "NobleMajo",
+    "email": "majo@coreunit.net",
+    "url": "https://noblemajo.de/en/"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "bun-plugin-dts": "^0.3.0",
+    "@types/bun": "^1.1.10"
   },
   "peerDependencies": {
     "typescript": "^5.6.2"

@@ -1,17 +1,17 @@
-# bun-router
+# bun-route
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
-![typescript](https://img.shields.io/badge/dynamic/json?style=plastic&color=blue&label=Typescript&prefix=v&query=peerDependencies.typescript&url=https%3A%2F%2Fraw.githubusercontent.com%2Fnoblemajo%2Fbun-router%2Fmain%2Fpackage.json)
-![](https://img.shields.io/badge/dynamic/json?color=green&label=watchers&query=watchers&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fbun-router)
-![](https://img.shields.io/badge/dynamic/json?color=yellow&label=stars&query=stargazers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fbun-router)
-![](https://img.shields.io/badge/dynamic/json?color=navy&label=forks&query=forks&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fbun-router)
-<!-- ![](https://img.shields.io/badge/dynamic/json?color=darkred&label=open%20issues&query=open_issues&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fbun-router)
-![](https://img.shields.io/badge/dynamic/json?color=orange&label=subscribers&query=subscribers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fbun-router) -->
+![typescript](https://img.shields.io/badge/dynamic/json?style=plastic&color=blue&label=Typescript&prefix=v&query=peerDependencies.typescript&url=https%3A%2F%2Fraw.githubusercontent.com%2Fnoblemajo%2Fbun-route%2Fmain%2Fpackage.json)
+![](https://img.shields.io/badge/dynamic/json?color=green&label=watchers&query=watchers&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fbun-route)
+![](https://img.shields.io/badge/dynamic/json?color=yellow&label=stars&query=stargazers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fbun-route)
+![](https://img.shields.io/badge/dynamic/json?color=navy&label=forks&query=forks&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fbun-route)
+<!-- ![](https://img.shields.io/badge/dynamic/json?color=darkred&label=open%20issues&query=open_issues&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fbun-route)
+![](https://img.shields.io/badge/dynamic/json?color=orange&label=subscribers&query=subscribers_count&suffix=x&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fnoblemajo%2Fbun-route) -->
 
 **A fast, Express-like router for the high-performance `bun.serve()` HTTP server.**
 
-Bun-Router leverages Bun.js's powerful `bun.serve` to deliver a fast, familiar, and reliable routing experience. It provides developers with an easy-to-use, Express-like API, tailored for high-performance applications built with Bun.js.
+`bun-route` leverages Bun.js's powerful `bun.serve` to deliver a fast, familiar, and reliable routing experience. It provides developers with an easy-to-use, Express-like API, tailored for high-performance applications built with Bun.js.
 
-*At the **time of Bun-Router's creation**, Bun.js did not include a built-in router, so Bun-Router was designed as a lightweight, dependency-free solution to fill that gap.*
+*At the **time of `bun-route`'s creation**, Bun.js did not include a built-in router, so `bun-route` was designed as a lightweight, dependency-free solution to fill that gap.*
 
 # features
 
@@ -20,14 +20,14 @@ Bun-Router leverages Bun.js's powerful `bun.serve` to deliver a fast, familiar, 
 - **wildcards**: Can handle double wildcards (`**`) as any recursive path and 
   single wildcards (`*`) as any path part. *It also provides a path parameter string array".*
   If enabled, cookies can also automatically be set/unset to the response headers. 
-- **static-serve**: Serves static files via a middleware ([example](https://github.com/NobleMajo/bun-router/blob/main/examples/static-serve.ts)).
+- **static-serve**: Serves static files via a middleware ([example](https://github.com/NobleMajo/bun-route/blob/main/examples/static-serve.ts)).
 - **dump-router**: You can create a string router dump that lists the defined routes.
   If you provide a bun server, it also adds a `server-is-running-on` message.
-- **basic-auth**: Protects the following via HTTP basic auth ([example](https://github.com/NobleMajo/bun-router/blob/main/examples/basic-auth.ts)).
-- **cookie-handling**: Cookie parsing can be enabled via a middleware ([example](https://github.com/NobleMajo/bun-router/blob/main/examples/cookies.ts)).  
+- **basic-auth**: Protects the following via HTTP basic auth ([example](https://github.com/NobleMajo/bun-route/blob/main/examples/basic-auth.ts)).
+- **cookie-handling**: Cookie parsing can be enabled via a middleware ([example](https://github.com/NobleMajo/bun-route/blob/main/examples/cookies.ts)).  
 - **redirect-handler**: You can redirect via the `ResponseBuilder` or
-  via a redirect middleware ([example](https://github.com/NobleMajo/bun-router/blob/main/examples/redirect.ts)).
-- **websocket-support**: Can handle websocket request via a middleware ([example](https://github.com/NobleMajo/bun-router/blob/main/examples/websocket.ts)).
+  via a redirect middleware ([example](https://github.com/NobleMajo/bun-route/blob/main/examples/redirect.ts)).
+- **websocket-support**: Can handle websocket request via a middleware ([example](https://github.com/NobleMajo/bun-route/blob/main/examples/websocket.ts)).
 
 ## performance
 
@@ -42,19 +42,19 @@ Bun-Router leverages Bun.js's powerful `bun.serve` to deliver a fast, familiar, 
 ## install
 
 ```sh
-bun i github:NobleMajo/bun-router
+bun i github:NobleMajo/bun-route
 ```
 
 ## import 
 
 ```ts
-import { Router } from "bun-router/src/index";
+import { Router } from "bun-route/src/index";
 ```
 
 ## example
 
 ```ts
-import { Router } from "bun-router/src/index";
+import { Router } from "bun-route/src/index";
 
 const router = new Router()
 
@@ -74,17 +74,17 @@ console.info(router.dump(server))
 
 # examples
 
-Checkout the bun-router [examples](https://github.com/NobleMajo/bun-router/tree/main/examples):
-- [simple example](https://github.com/NobleMajo/bun-router/blob/main/examples/simple.ts)
-- [static-serve example](https://github.com/NobleMajo/bun-router/blob/main/examples/static-serve.ts)
-- [websocket example](https://github.com/NobleMajo/bun-router/blob/main/examples/websocket.ts)
-- [redirect example](https://github.com/NobleMajo/bun-router/blob/main/examples/redirect.ts)
-- [cookies example](https://github.com/NobleMajo/bun-router/blob/main/examples/cookies.ts)
-- [basic auth example](https://github.com/NobleMajo/bun-router/blob/main/examples/basic-auth.ts)
+Checkout the bun-route [examples](https://github.com/NobleMajo/bun-route/tree/main/examples):
+- [simple example](https://github.com/NobleMajo/bun-route/blob/main/examples/simple.ts)
+- [static-serve example](https://github.com/NobleMajo/bun-route/blob/main/examples/static-serve.ts)
+- [websocket example](https://github.com/NobleMajo/bun-route/blob/main/examples/websocket.ts)
+- [redirect example](https://github.com/NobleMajo/bun-route/blob/main/examples/redirect.ts)
+- [cookies example](https://github.com/NobleMajo/bun-route/blob/main/examples/cookies.ts)
+- [basic auth example](https://github.com/NobleMajo/bun-route/blob/main/examples/basic-auth.ts)
 
 Run a example:
 ```sh
-git clone https://github.com/NobleMajo/bun-router.git
+git clone https://github.com/NobleMajo/bun-route.git
 
 bun run examples/simple.ts
 ```
