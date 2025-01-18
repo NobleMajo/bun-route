@@ -1,9 +1,9 @@
 import { type Server } from "bun"
 import { statSync } from "fs"
 import { join } from "path"
-import type { Request as BunRequest } from "undici-types"
 import { HttpMethod, parseHttpMethods, stringifyHttpMethods, type HttpMethodString } from "./method"
 import { isMergeableEndpointRoute, isMergedRequestMiddleware, mergeRequestMiddlewares, unmergeRequestMiddleware, } from "./middleware"
+import { BunRequest } from "./request"
 import { ResponseBuilder } from "./responseBuilder"
 import type { Awaitable, BunRequestHandler, EndpointRoute, Request, RequestMiddleware } from "./types"
 

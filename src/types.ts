@@ -1,11 +1,10 @@
 import { type Server, type SocketAddress } from "bun"
-import type { Request as BunRequest } from "undici-types"
 import { type HttpMethod } from "./method"
+import { BunRequest } from "./request"
 import type { ResponseBuilder } from "./responseBuilder"
 import { SplitPath } from "./router"
 
 export type Awaitable<T> = T | Promise<T>
-
 
 export type Request = BunRequest & {
     /**
