@@ -1,6 +1,7 @@
 import { type Server } from "bun"
 import { statSync } from "fs"
 import { join } from "path"
+import type { Request as BunRequest } from "undici-types"
 import { HttpMethod, parseHttpMethods, stringifyHttpMethods, type HttpMethodString } from "./method"
 import { isMergeableEndpointRoute, isMergedRequestMiddleware, mergeRequestMiddlewares, unmergeRequestMiddleware, } from "./middleware"
 import { ResponseBuilder } from "./responseBuilder"
@@ -272,7 +273,7 @@ export class Router {
      * @returns Bun response, void or a promise of response or void
      */
     handle: BunRequestHandler = (
-        request: Request,
+        request: BunRequest,
         server: Server
     ) => this.innerHandle(request, server)
 
@@ -285,7 +286,7 @@ export class Router {
      * @param server A server to handle it on
      * @returns Bun response, void or a promise of response or void
      */
-    private innerHandle(request: Request, server: Server): Awaitable<Response> {
+    innerHandle(request: BunRequest, server: Server): Awaitable<Response> {
         const res = new ResponseBuilder()
         const req = request as Request
         req.httpMethod = parseHttpMethods(req.method)
