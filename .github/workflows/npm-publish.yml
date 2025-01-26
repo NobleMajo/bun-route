@@ -60,6 +60,7 @@ jobs:
 
       - name: Prepare npm build
         run: |
+          echo "//registry.npmjs.org/:_authToken=\${NODE_AUTH_TOKEN}" > .npmrc
           sed -i 's!./src!./dist!g' ./package.json
           bun i
           
