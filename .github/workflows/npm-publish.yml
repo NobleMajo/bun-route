@@ -27,12 +27,6 @@ jobs:
         bun run b
         bun run test --if-present
 
-    - name: Commit and push changes
-      uses: EndBug/add-and-commit@v9
-      with:
-        add: 'package*.json bun.lockb'
-        message: 'Bot: bun deps update'
-
     - name: Store build artifacts
       uses: actions/upload-artifact@v4
       with:
