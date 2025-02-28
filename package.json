@@ -1,6 +1,6 @@
 {
   "name": "bun-route",
-  "version": "1.1.5",
+  "version": "1.1.7",
   "description": "A fast, Express-like router for the high-performance bun.serve() HTTP server.",
   "type": "module",
   "main": "./src/index.cjs",
@@ -14,7 +14,7 @@
   "scripts": {
     "bump": "bun --print \"const pkg = await Bun.file('package.json').json(); pkg.version = pkg.version.split('.').map((v, i) => i===2?+v+1:v).join('.'); await Bun.write('package.json', JSON.stringify(pkg, null, 2)); export default pkg.version\"",
     "test": "bun test",
-    "build": "bun run .github/build.ts"
+    "b": "bun run .github/build.ts"
   },
   "files": [
     "./src"
@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "bun-plugin-dts": "^0.3.0",
-    "@types/bun": "^1.2.2"
+    "@types/bun": "^1.2.4"
   },
   "peerDependencies": {
     "typescript": "^5.6.2"

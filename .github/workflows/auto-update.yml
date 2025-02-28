@@ -26,8 +26,8 @@ jobs:
       run: |
         bun bump
         bun update
-        bun run build
-        bun test --if-present
+        bun run b
+        bun run test --if-present
 
     - name: Commit and push changes
       uses: EndBug/add-and-commit@v9
